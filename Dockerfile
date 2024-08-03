@@ -11,7 +11,7 @@ COPY . .
 
 RUN ng build
 
-ENV PORT=3000
+ENV PORT=4200
 
 EXPOSE $PORT
 
