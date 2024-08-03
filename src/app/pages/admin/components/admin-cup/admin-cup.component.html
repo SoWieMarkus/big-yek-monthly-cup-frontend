@@ -1,0 +1,13 @@
+<button class="trackmania-button transform" [routerLink]="['/admin/dashboard']"><mat-icon>arrow_back</mat-icon></button>
+@if (cup() !== null) {
+<h2>{{header()}}</h2>
+@for(qualifier of qualifier(); track qualifier.id) {
+<div class="qualifier transform"><button class="trackmania-button"
+    (click)="openUploadDialog(qualifier.id)">Update</button> <button class="trackmania-button" style="margin: 0 5px;"
+    (click)="clear(qualifier.id)">Clear</button><span style="transform: skew(8deg);">Weekly Qualifier
+    #{{qualifier.version}} |
+    <span style="font-weight: bold;"
+      [style.color]="getColorByAmount(qualifier._count.results)">{{qualifier._count.results}}</span>
+    Results</span> </div>
+}
+}

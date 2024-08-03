@@ -1,0 +1,9 @@
+.drop-zone {
+  border: 2px dashed #bbb;
+  border-radius: 5px;
+  padding: 30px;
+  text-align: center;
+  color: #bbb;
+  background-color: rgb(187, 187, 187, 0.05);
+  height: 10vh;
+}

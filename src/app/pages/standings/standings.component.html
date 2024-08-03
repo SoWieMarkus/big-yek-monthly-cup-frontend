@@ -1,0 +1,32 @@
+<h1>BIG YEK Monhtly Cup - Standings</h1>
+
+@if(cup() !== null) {
+<h2>{{name()}}</h2>
+}
+
+
+<table>
+  <thead>
+    <th>Position</th>
+    <th>
+      Player
+    </th>
+    <th>Points</th>
+  </thead>
+  @for (entry of leaderboard(); track entry.player.id) {
+  <tr>
+    <td>
+      {{getPosition(entry, $index)}}
+    </td>
+    <td>
+      {{entry.player.name}}
+    </td>
+    <td>
+      {{getPoints(entry)}}
+    </td>
+  </tr>
+  }
+  @empty {
+  <p>No results for the current Cup! Check again later.</p>
+  }
+</table>

@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Upload CSV File</h2>
+
+<mat-dialog-content>
+
+  <div class="drop-zone" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
+    <div>Drop CSV file here.</div>
+    <input #fileInput type="file" [multiple]="true" class="details" (change)="onChange($event)">
+  </div>
+
+  @if (content().length > 0) {
+  <table>
+    <thead>
+      <th>Position</th>
+      <th>Points</th>
+      <th>Name</th>
+      <th>Login</th>
+      <th>Zone</th>
+    </thead>
+
+
+    @for (row of content(); track $index) {
+    <tr>
+      @for (column of row; track $index) {
+      <td>{{column}}</td>
+      }
+    </tr>
+    }
+  </table>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button class="trackmania-button transform" (click)="onUpload()" [disabled]="content().length === 0">Upload</button>
+</mat-dialog-actions>

@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: white;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.login-body {
+  padding: 1rem;
+}
+
+.login-body input {
+  border: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  color: white;
+  background-color: transparent;
+  flex: 1
+}
+
+.login-body button {
+  width: 100%;
+}

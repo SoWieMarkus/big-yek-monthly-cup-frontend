@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="login-body trackmania-div transform">
+    <h2>JAA HELLO GUYS!</h2>
+    <form id="loginForm" (submit)="login($event)">
+      <div class="input-group">
+        <input type="text" id="username" placeholder="Username" required [(ngModel)]="username" name="username">
+      </div>
+      <div class="input-group">
+        <input type="password" id="password" placeholder="Password" required [(ngModel)]="password" name="password">
+      </div>
+      <button type="submit" class="trackmania-button">Login</button>
+    </form>
+  </div>
+</div>

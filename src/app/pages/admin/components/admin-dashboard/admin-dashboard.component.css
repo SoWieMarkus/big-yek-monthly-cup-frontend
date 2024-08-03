@@ -1,0 +1,9 @@
+.cup {
+  margin: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+}
