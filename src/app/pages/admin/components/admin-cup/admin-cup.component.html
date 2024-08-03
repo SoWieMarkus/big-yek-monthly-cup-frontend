@@ -1,4 +1,8 @@
 <button class="trackmania-button transform" [routerLink]="['/admin/dashboard']"><mat-icon>arrow_back</mat-icon></button>
+
+@if (loading()) {
+<app-loading />
+} @else {
 @if (cup() !== null) {
 <h2>{{header()}}</h2>
 @for(qualifier of qualifier(); track qualifier.id) {
@@ -9,5 +13,9 @@
     <span style="font-weight: bold;"
       [style.color]="getColorByAmount(qualifier._count.results)">{{qualifier._count.results}}</span>
     Results</span> </div>
+}
+}
+@else {
+<p>Couldn't load details of cup</p>
 }
 }

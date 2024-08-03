@@ -10,24 +10,37 @@
 
 <hr>
 
+@if(loading()) {
+<app-loading />
+}
+@else {
 <section>
 
   <h2>Cups
   </h2>
   <button class="trackmania-button transform" stlye="float:right;" (click)="refresh()">Refresh</button>
   @for(cup of cups(); track cup.id) {
-  <div class="cup">
-    <button mat-icon-button stlye="float:right;"
-      (click)="changeCurrentCup(cup)"><mat-icon>{{getIconCurrent(cup.current)}}</mat-icon></button>
-    <button mat-icon-button stlye="float:right;"
-      (click)="changeCupVisibility(cup)"><mat-icon>{{getIconPublic(cup.public)}}</mat-icon></button>
-    <button mat-icon-button stlye="float:right; display: block;"
-      (click)="delete(cup)"><mat-icon>delete</mat-icon></button>
-    <button mat-icon-button stlye="float:right; display: block;"
-      (click)="rename(cup)"><mat-icon>mode_edit</mat-icon></button>
-    <span [routerLink]="getRedirect(cup.id)" style="cursor: pointer;">{{cup.name}} | ID: {{cup.id}} | Year: {{cup.year}}
-      | Month: {{cup.month}}
-    </span>
+  <div class="cup transform">
+    <div style="transform: skew(8deg);">
+      <button mat-icon-button stlye="float:right;"
+        (click)="changeCurrentCup(cup)"><mat-icon>{{getIconCurrent(cup.current)}}</mat-icon></button>
+      <button mat-icon-button stlye="float:right;"
+        (click)="changeCupVisibility(cup)"><mat-icon>{{getIconPublic(cup.public)}}</mat-icon></button>
+      <button mat-icon-button stlye="float:right; display: block;"
+        (click)="delete(cup)"><mat-icon>delete</mat-icon></button>
+      <button mat-icon-button stlye="float:right; display: block;"
+        (click)="rename(cup)"><mat-icon>mode_edit</mat-icon></button>
+    </div>
+
+    <div style="transform: skew(8deg)">
+      <div>
+        <a [routerLink]="getRedirect(cup.id)" style="cursor: pointer; font-size: 1.2rem;">{{cup.name}} </a>
+      </div>
+      <div>
+        ID: {{cup.id}} | Year: {{cup.year}}| Month: {{cup.month}}
+      </div>
+    </div>
+
 
   </div>
   }
@@ -35,3 +48,4 @@
   <p>There are no Cups.</p>
   }
 </section>
+}

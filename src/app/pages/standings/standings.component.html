@@ -2,12 +2,10 @@
 
 @if(cup() !== null) {
 <h2>{{name()}}</h2>
-}
-
-
+@if(leaderboard().length > 0) {
 <table>
   <thead>
-    <th>Position</th>
+    <th style="border-radius: 8px 0 0 0;">Position</th>
     <th>
       Player
     </th>
@@ -26,7 +24,12 @@
     </td>
   </tr>
   }
-  @empty {
-  <p>No results for the current Cup! Check again later.</p>
-  }
 </table>
+}
+} @else {
+<app-loading />
+}
+
+@if(leaderboard().length === 0 && cup() !== null) {
+<p>Currently there are no results for this cup.</p>
+}

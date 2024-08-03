@@ -1,0 +1,56 @@
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+/* Table styling */
+table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+/* Header styling */
+th {
+  background-color: #167654;
+  color: white;
+  padding: 12px;
+  text-align: center;
+}
+
+th:first {
+  border-radius: 8px 0 0 0;
+}
+
+/* Row styling */
+tr {
+  transition: all 0.3s ease;
+}
+
+tr:nth-child(-n+20) {
+  background-color: hsl(159, 100%, 73%);
+}
+
+tr:nth-child(20) td {
+  border-bottom: 3px solid black;
+  /* Thicker border color */
+}
+
+/* Cell styling */
+td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Hover effect for rows */
+tr:hover {
+  background-color: #e0e7ff;
+  transform: scale(1.05)
+}
