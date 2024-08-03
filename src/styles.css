@@ -10,7 +10,7 @@ html {
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   overflow-y: scroll;
-  background-color: #066141;
+  background: linear-gradient(to right, #68ffca 0%, white 20%, white 80%, #68ffca 100%);
 
 }
 
