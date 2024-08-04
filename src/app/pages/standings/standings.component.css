@@ -35,7 +35,7 @@ tr {
 }
 
 tr:nth-child(-n+21) {
-  background-color: hsl(159, 100%, 73%);
+  background-color: hsl(159, 100%, 93%);
 }
 
 tr:nth-child(21) td {
