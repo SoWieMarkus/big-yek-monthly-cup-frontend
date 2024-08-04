@@ -55,7 +55,7 @@ footer .wave svg path {
 }
 
 footer a {
-  padding: 0 2rem;
+  padding: 0 .5rem;
 }
 
 @media (max-width: 1000px) {
