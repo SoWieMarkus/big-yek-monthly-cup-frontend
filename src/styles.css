@@ -48,6 +48,12 @@ body {
 
 @media (max-width: 1000px) {
   body {
-    background-color: white;
+    background: white;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background: white;
   }
 }
