@@ -33,6 +33,7 @@ export const routes: Routes = [
   {
     path: "standings",
     component: StandingsComponent,
+    title: "BYMC: Standings",
   },
   {
     path: "login",
