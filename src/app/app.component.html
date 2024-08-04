@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header" routerLink="/">
   <img class="website"
     alt="Header. BIG YEK Monthly Cup! Sponsored by Volvic. Hosted by GranaDy. 3 Weekly Qualifier, always on monday after COTD."
     src="assets/header.jpeg" style="width: 100%; border-bottom: 3px solid #063825;">
@@ -7,7 +7,29 @@
     src="assets/header-mobile.jpeg" style="width: 100%; border-bottom: 3px solid #063825;">
 
 </div>
-<div class="container">
-  <router-outlet />
+<div>
+  <div class="container">
+    <router-outlet />
+  </div>
+  <img alt="GranaDy pointing to the results." src="assets/nyco.png" class="nyco">
 </div>
-<img alt="GranaDy pointing to the results." src="assets/nyco.png" class="nyco">
+
+
+<footer>
+  <div class="wave">
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#00aaff; stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#007BFF; stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <path d="M0,60 C150,150 350,0 500,60 L500,150 L0,150 Z" style="stroke: none;"></path>
+    </svg>
+  </div>
+  <div class="footer-content">
+    <a [routerLink]="'/privacy-policy'">Privacy Policy</a>
+    <a href="https://discord.gg/hf3rYcxb9y">Discord</a>
+  </div>
+
+</footer>
