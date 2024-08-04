@@ -14,6 +14,12 @@ export const routes: Routes = [
     title: "BYMC: Admin Panel",
     canActivate: [AuthGuard],
     children: [
+
+      {
+        path: "",
+        redirectTo: "dashboard",
+        pathMatch: "full",
+      },
       {
         path: "dashboard",
         component: AdminDashboardComponent,
