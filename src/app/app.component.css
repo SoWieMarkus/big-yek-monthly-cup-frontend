@@ -4,6 +4,7 @@
   padding: 1rem;
   background-color: white;
   box-sizing: border-box;
+  min-height: 70vh;
 }
 
 
@@ -13,7 +14,7 @@
   bottom: 0;
   height: 50vh;
   pointer-events: none;
-  shape-outside: inset(50%);
+  margin-top: -50vh;
 }
 
 .mobile {
