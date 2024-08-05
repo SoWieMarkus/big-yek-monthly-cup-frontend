@@ -6,12 +6,14 @@
   box-sizing: border-box;
 }
 
+
 .nyco {
   position: sticky;
   left: 0;
   bottom: 0;
   height: 50vh;
   pointer-events: none;
+  shape-outside: inset(50%);
 }
 
 .mobile {
