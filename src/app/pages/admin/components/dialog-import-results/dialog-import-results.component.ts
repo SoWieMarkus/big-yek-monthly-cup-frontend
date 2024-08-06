@@ -1,4 +1,4 @@
-import { Component, inject, signal } from "@angular/core";
+import { Component, computed, inject, signal } from "@angular/core";
 import { MatButton } from "@angular/material/button";
 import {
   MatDialogActions,
@@ -6,13 +6,13 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from "@angular/material/dialog";
-import Papa from "papaparse";
-import { BackendService } from "../../../../services/backend.service";
+import { CsvValidatorService, type Row } from "../../../../services/csv-validator.service";
+import { CdkDrag, type CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: "app-dialog-import-results",
   standalone: true,
-  imports: [MatDialogContent, MatDialogActions, MatButton, MatDialogTitle],
+  imports: [MatDialogContent, MatDialogActions, MatButton, MatDialogTitle, CdkDrag, CdkDropList],
   templateUrl: "./dialog-import-results.component.html",
   styleUrl: "./dialog-import-results.component.css",
 })
@@ -20,8 +20,16 @@ export class DialogImportResultsComponent {
   protected readonly dialogRef = inject(
     MatDialogRef<DialogImportResultsComponent>,
   );
-  protected readonly content = signal<string[]>([]);
-  private readonly backend = inject(BackendService);
+  protected readonly content = signal<Row[]>([]);
+  protected readonly firstRows = computed(() => {
+    const content = this.content();
+    return content.slice(0, 5);
+  });
+  protected readonly rest = computed(() => {
+    const content = this.content();
+    return content.slice(5);
+  })
+  private readonly csvValidator = inject(CsvValidatorService);
 
   protected async onChange(event: Event) {
     const target = event.target;
@@ -54,6 +62,22 @@ export class DialogImportResultsComponent {
     this.import(files);
   }
 
+  protected drop(event: CdkDragDrop<Row>): void {
+    if (event.previousIndex < 5 && event.currentIndex < 5) {
+      const content = this.content();
+      const updatedContent = [...content];
+      moveItemInArray(updatedContent, event.previousIndex, event.currentIndex);
+
+      let position = 1;
+      for (const entry of updatedContent.slice(0, 5)) {
+        entry[0] = position;
+        position++;
+      }
+
+      this.content.set(updatedContent); // Set the new state
+    }
+  }
+
   public import(files: FileList) {
     const file = files[0];
     if (file.type !== "text/csv" && !file.name.toLowerCase().endsWith(".csv")) {
@@ -76,19 +100,10 @@ export class DialogImportResultsComponent {
         return;
       }
 
-      Papa.parse<string>(csv, {
-        dynamicTyping: true,
-        skipEmptyLines: true,
-        complete: (result) => {
-          if (result.errors.length > 0) {
-            for (const error of result.errors) {
-              console.error(error);
-            }
-          }
-          this.content.set(result.data)
-        },
-      });
-    };
+      this.csvValidator.validate(csv)
+        .then(data => this.content.set(data))
+        .catch(error => console.error(error))
+    }
 
     reader.onerror = () => {
       console.error("Error reading file");

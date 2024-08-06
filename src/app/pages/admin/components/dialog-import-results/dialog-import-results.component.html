@@ -8,24 +8,33 @@
   </div>
 
   @if (content().length > 0) {
-  <table>
-    <thead>
-      <th>Position</th>
-      <th>Points</th>
-      <th>Name</th>
-      <th>Login</th>
-      <th>Zone</th>
-    </thead>
+  <div cdkDropList (cdkDropListDropped)="drop($event)">
+    <table>
+      <thead>
+        <th>Position</th>
+        <th>Points</th>
+        <th>Name</th>
+        <th>Login</th>
+        <th>Zone</th>
+      </thead>
 
 
-    @for (row of content(); track $index) {
-    <tr>
-      @for (column of row; track $index) {
-      <td>{{column}}</td>
+      @for (row of firstRows(); track $index) {
+      <tr class="draggable-row" cdkDrag>
+        @for (column of row; track $index) {
+        <td>{{column}}</td>
+        }
+      </tr>
       }
-    </tr>
-    }
-  </table>
+      @for (row of rest(); track $index) {
+      <tr>
+        @for (column of row; track $index) {
+        <td>{{column}}</td>
+        }
+      </tr>
+      }
+    </table>
+  </div>
   }
 </mat-dialog-content>
 
