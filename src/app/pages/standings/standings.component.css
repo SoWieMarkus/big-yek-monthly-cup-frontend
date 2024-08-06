@@ -14,7 +14,6 @@ table {
   border-collapse: collapse;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-  border-radius: 8px;
 }
 
 /* Header styling */
@@ -54,4 +53,10 @@ td {
 tr:hover {
   background-color: #e0e7ff;
   transform: scale(1.05)
+}
+
+tr:last-child {
+  td {
+    border: 0;
+  }
 }
