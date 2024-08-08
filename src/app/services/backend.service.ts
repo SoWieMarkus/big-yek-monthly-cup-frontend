@@ -8,6 +8,7 @@ import {
   CupSchema,
 } from "../models/cup";
 import { JwtService } from "./jwt.service";
+import type { Row } from "./csv-validator.service";
 
 @Injectable({
   providedIn: "root",
@@ -74,8 +75,8 @@ export class BackendService {
         this.delete(`admin/cup/${id}/delete`).pipe(map((_) => true)),
       changeCupVisibility: (id: number, visible: boolean) =>
         this.post(`admin/cup/${id}/public`, { visible }).pipe(map((_) => true)),
-      uploadResults: (cupId: number, qualifierId: number, content: string[][]) =>
-        this.post(`admin/cup/${cupId}/qualifier/${qualifierId}/update`, content).pipe(
+      uploadResults: (cupId: number, qualifierId: number, data: { server: number, data: Row[] }) =>
+        this.post(`admin/cup/${cupId}/qualifier/${qualifierId}/update`, data).pipe(
           map((_) => true),
         ),
       createQualifier: (cupId: number, version: number) =>
