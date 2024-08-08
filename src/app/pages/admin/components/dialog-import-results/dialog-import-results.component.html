@@ -7,7 +7,17 @@
     <input #fileInput type="file" [multiple]="true" class="details" (change)="onChange($event)">
   </div>
 
+  <div>
+    <h2>Select Server</h2>
+
+    <label for="server">Server:</label><br>
+    <input min="1" max="100" class="trackmania-button transform" type="number" id="server" name="server"
+      [(ngModel)]="server">
+  </div>
+
+
   @if (content().length > 0) {
+  <h2>Reorder the Top5:</h2>
   <div cdkDropList (cdkDropListDropped)="drop($event)">
     <table>
       <thead>

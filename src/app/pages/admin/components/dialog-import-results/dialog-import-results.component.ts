@@ -8,11 +8,12 @@ import {
 } from "@angular/material/dialog";
 import { CsvValidatorService, type Row } from "../../../../services/csv-validator.service";
 import { CdkDrag, type CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: "app-dialog-import-results",
   standalone: true,
-  imports: [MatDialogContent, MatDialogActions, MatButton, MatDialogTitle, CdkDrag, CdkDropList],
+  imports: [FormsModule, MatDialogContent, MatDialogActions, MatButton, MatDialogTitle, CdkDrag, CdkDropList],
   templateUrl: "./dialog-import-results.component.html",
   styleUrl: "./dialog-import-results.component.css",
 })
@@ -30,6 +31,8 @@ export class DialogImportResultsComponent {
     return content.slice(5);
   })
   private readonly csvValidator = inject(CsvValidatorService);
+
+  protected server = 1;
 
   protected async onChange(event: Event) {
     const target = event.target;
@@ -117,6 +120,6 @@ export class DialogImportResultsComponent {
   }
 
   protected onUpload() {
-    this.dialogRef.close(this.content());
+    this.dialogRef.close({ server: this.server, data: this.content() });
   }
 }
